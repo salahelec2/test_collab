@@ -9,7 +9,7 @@
  */
 int main(void)
 {
-	printf("%d\n", _printf("Character:[%c]\n", 'H'));
+	printf("%d\n", _printf("%c", 'H'));
 
 	printf("Character:[%c]\n", 'H');
 	printf("%d\n", _printf("String:[%s]\n", "I am a string !"));
