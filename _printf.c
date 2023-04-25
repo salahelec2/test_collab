@@ -1,26 +1,70 @@
 #include "main.h"
 
 /**
- * _printf - Receives the main string and all the necessary parameters to
- * print a formated string
- * @format: A string containing all the desired characters
- * Return: A total count of the characters printed
+ * _printf - duplicate functionality of printf
+ * @format: string containing characters and format specifiers
+ * @...: arguments to be printed according to format
+ * Return: number of characters printed
  */
 
 int _printf(const char *format, ...)
 {
-	int printed_chars;
+	int i, print_count, total_print_count;
 
-	va_list arg_list;
+	va_list args;
 
 	if (format == NULL)
 		return (-1);
 
-	va_start(arg_list, format);
+	va_start(args, format);
 
-	printed_chars = format_reciever(format, arg_list);
+	total_print_count = 0;
 
-	va_end(arg_list);
+	for (i = 0; format[i] != '\0'; i++)
+	{
+		if (format[i] == '%')
+		{
 
-	return (printed_chars);
+			if (format[i + 1] == '%')
+			{
+				_putchar('%');
+				total_print_count++;
+			}
+			else if (format[i + 1] == 'c')
+			{
+				_putchar(va_arg(args, int));
+				total_print_count++;
+			}
+			else if (format[i + 1] == 's')
+			{
+				print_count = print_string(args);
+				if (print_count == -1)
+					return (-1);
+				total_print_count += print_count;
+			}
+
+			else if (format[i + 1] != ' ')
+			{
+				if (format[i + 1] != '\0')
+				{
+					_putchar(format[i]);
+					_putchar(format[i + 1]);
+					total_print_count += 2;
+				}
+				else
+					return (-1);
+			}
+
+			i++;
+		}
+		else
+		{
+			_putchar(format[i]);
+			total_print_count++;
+		}
+	}
+
+	va_end(args);
+
+	return (total_print_count);
 }
