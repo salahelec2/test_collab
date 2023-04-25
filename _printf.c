@@ -9,7 +9,7 @@
 
 int _printf(const char *format, ...)
 {
-	int i, print_count = 0, total_print_count = 0;
+	int i, pr_count = 0, total_print_count = 0, next;
 	va_list args;
 
 	if (format == NULL)
@@ -19,26 +19,20 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == '%' || format[i + 1] == 'c')
-				_putchar(format[i + 1] == '%' ? '%' : va_arg(args, int));
-			else if (format[i + 1] == 's')
+			next = format[i + 1];
+			if (next == '%' || next == 'c')
+				_putchar(next == '%' ? '%' : va_arg(args, int));
+			else if (next == 's' || next == 'd' || next == 'i')
 			{
-				print_count = print_string(args);
-				if (print_count == -1)
+				pr_count = next == 's' ? print_string(args) : print_integer(args);
+				if (pr_count == -1)
 					return (-1);
-				total_print_count += print_count - 1;
+				total_print_count += pr_count - 1;
 			}
-			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
-			{
-				print_count = print_integer(args);
-				if (print_count == -1)
-					return (-1);
-				total_print_count += print_count - 1;
-			}
-			else if (format[i + 1] != ' ' && format[i + 1] != '\0')
+			else if (next != ' ' && next != '\0')
 			{
 				_putchar(format[i]);
-				_putchar(format[i + 1]);
+				_putchar(next);
 				total_print_count++;
 			}
 			else
