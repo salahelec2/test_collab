@@ -11,21 +11,16 @@ int _printf(const char *format, ...)
 {
 	int printed_chars;
 
-	convert_struct f_list[] = {
-		{"%", print_percent},
-		{"c", print_char},
-		{"s", print_string},
-		/* {NULL, NULL}, */
-	};
-
 	va_list arg_list;
 
 	if (format == NULL)
 		return (-1);
 
 	va_start(arg_list, format);
-	printed_chars = format_reciever(format, f_list, arg_list);
+
+	printed_chars = format_reciever(format, arg_list);
+
 	va_end(arg_list);
+
 	return (printed_chars);
 }
-

@@ -9,18 +9,36 @@
  * Return: A total count of the characters printed.
  */
 
-int format_reciever(const char *format, convert_struct f_list[], va_list arg_list)
+int format_reciever(const char *format, va_list arg_list)
 {
 	int i, j, r_val, printed_chars;
+	convert_struct f_list[] = {
+
+		{"s", print_string},
+		/* {NULL, NULL}, */
+	};
 
 	printed_chars = 0;
+
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
 			for (j = 0; f_list[j].sym != NULL; j++)
 			{
-				if (format[i + 1] == f_list[j].sym[0])
+				if (format[i + 1] == '%')
+				{
+					_putchar('%');
+					printed_chars++;
+					break;
+				}
+				else if (format[i + 1] == 'c')
+				{
+					_putchar(va_arg(arg_list, int));
+					printed_chars++;
+					break;
+				}
+				else if (format[i + 1] == f_list[j].sym[0])
 				{
 					r_val = f_list[j].f(arg_list);
 					if (r_val == -1)
@@ -48,6 +66,6 @@ int format_reciever(const char *format, convert_struct f_list[], va_list arg_lis
 			printed_chars++;
 		}
 	}
+
 	return (printed_chars);
 }
-
