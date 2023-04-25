@@ -30,11 +30,14 @@ int _printf(const char *format, ...)
 					return (-1);
 				total_print_count += print_count - 1;
 			}
-			else if (format[i + 1] == '%')
+			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 			{
-				/* code */
+				print_count = print_integer(args);
+				if (print_count == -1)
+					return (-1);
+				total_print_count += print_count - 1;
 			}
-			
+
 			else if (format[i + 1] != ' ' && format[i + 1] != '\0')
 			{
 				_putchar(format[i]);
