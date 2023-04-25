@@ -19,10 +19,8 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			if (format[i + 1] == '%')
-				_putchar('%');
-			else if (format[i + 1] == 'c')
-				_putchar(va_arg(args, int));
+			if (format[i + 1] == '%' || format[i + 1] == 'c')
+				_putchar(format[i + 1] == '%' ? '%' : va_arg(args, int));
 			else if (format[i + 1] == 's')
 			{
 				print_count = print_string(args);
@@ -48,9 +46,7 @@ int _printf(const char *format, ...)
 			i++;
 		}
 		else
-		{
 			_putchar(format[i]);
-		}
 	}
 	va_end(args);
 	return (total_print_count);
