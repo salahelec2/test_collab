@@ -10,14 +10,16 @@ int print_integer(va_list args)
 {
 	int length = 0;
 	int digit = 1;
-	int num = va_arg(args, int);
-
-	if (num < 0)
+	unsigned int num;
+	int n = va_arg(args, int);
+	if (n < 0)
 	{
 		_putchar('-');
 		length++;
-		num *= -1;
+		num = n * -1;
 	}
+	else
+		num = n;
 	while (num / digit > 9)
 		digit *= 10;
 
