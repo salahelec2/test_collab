@@ -17,5 +17,7 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 int print_string(va_list);
 int print_integer(va_list);
+int _print_aux(const char *format, va_list args);
+print_sym_func *init_print_sym(void);
 
 #endif /* MAIN_H */
