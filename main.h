@@ -7,6 +7,12 @@
 #include <stdarg.h>
 #include <limits.h>
 
+typedef struct print
+{
+    char *type;
+    int (*f)(va_list);
+} print_sym_func;
+
 int _printf(const char *format, ...);
 int _putchar(char c);
 int print_string(va_list);
