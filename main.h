@@ -9,8 +9,8 @@
 
 typedef struct print
 {
-    char *type;
-    int (*f)(va_list);
+	char *type;
+	int (*f)(va_list);
 } print_sym_func;
 
 int _printf(const char *format, ...);
