@@ -12,7 +12,10 @@ int print_integer(va_list args)
 	int digit = 1;
 	unsigned int num;
 	int n = va_arg(args, int);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 296ac9f983afa25792cb96b278afc6d033ffb924
 	if (n < 0)
 	{
 		_putchar('-');
