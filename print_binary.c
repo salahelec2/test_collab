@@ -31,8 +31,17 @@ char *reverse_string(char *str)
 char *int_to_bin(int n)
 {
 	int binaryNum[33];
+	int isNegative = 0;
 	int i = 0, j;
 	char *str;
+	if (n == 0)
+		return ("0");
+
+	if (n < 0)
+	{
+		isNegative = 1;
+		n = n * -1;
+	}
 
 	while (n > 0)
 	{
@@ -47,6 +56,12 @@ char *int_to_bin(int n)
 
 	for (j = i - 1; j >= 0; j--)
 		str[j] = binaryNum[j] + '0';
+
+	if (isNegative)
+	{
+		str[i] = '-';
+		i++;
+	}
 
 	str[i] = '\0';
 	return (reverse_string(str));

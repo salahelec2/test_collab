@@ -44,6 +44,10 @@ int main(void)
 	_printf("Unknown:[%d] ", 0100);
 	printf("Unknown:[%d]\n", 0100);
 	_printf("Unknown:[%b] ", 98);
+	_printf("Unknown:[%b] ", 1024);
+	_printf("Unknown:[%b] ", -1024);
+	_printf("Unknown:[%b] ", 0);
+	_printf("Unknown:[%b] ", UINT_MAX);
 
 	return (0);
 }
