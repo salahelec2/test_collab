@@ -43,6 +43,7 @@ int main(void)
 
 	_printf("Unknown:[%d] ", 0100);
 	printf("Unknown:[%d]\n", 0100);
+	_printf("Unknown:[%b] ", 98);
 
 	return (0);
 }

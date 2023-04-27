@@ -14,6 +14,7 @@ int _printf(const char *format, ...)
 		{"s", print_string},
 		{"d", print_integer},
 		{"i", print_integer},
+		{"b", print_binary},
 		{NULL, NULL}};
 
 	va_list args;
@@ -26,4 +27,3 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (total_print_count);
 }
-
