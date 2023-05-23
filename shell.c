@@ -6,10 +6,12 @@ int main(int ac, char **argv)
 	char *ptr_txt = NULL, *txt_copy = NULL;
 	size_t n = 0;
 	ssize_t charNB;
-	const char *delim = " \n"
+	const char *delim = " \n";
 
 	(void)ac;
 	(void)argv;
+	(void)delim;
+	(void)txt_copy;
 
 	while (1)
 	{
