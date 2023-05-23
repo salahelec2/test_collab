@@ -76,7 +76,9 @@ int main(int ac, char *argv[])
         num_tokens = 0;
     }
 
-    free(lineptr);
+    if (lineptr != NULL) {
+        free(lineptr);
+    }
 
     return (0);
 }
