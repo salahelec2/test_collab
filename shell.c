@@ -1,6 +1,27 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
-int main(int ac, char **argv){
+void execmd(char *argv[])
+{
+	char *command = NULL;
+
+	if (*argv)
+	{
+		/* get the command */
+		command = argv[0];
+
+		/* execute the command with execve */
+		if (execve(command, (const char**)argv, NULL) == -1)
+		{
+			perror("Error:");
+		}
+	}
+}
+
+int main(int ac, char *argv[])
+{
     char *prompt = ">> ";
     char *lineptr = NULL, *lineptr_copy = NULL;
     size_t n = 0;
@@ -9,8 +30,10 @@ int main(int ac, char **argv){
     int num_tokens = 0;
     char *token;
     int i;
+	char **args;
 
     (void)ac;
+	(void)argv;
 
     while (1) {
         printf("%s", prompt);
@@ -21,7 +44,7 @@ int main(int ac, char **argv){
         }
 
         lineptr_copy = malloc(sizeof(char) * nchars_read);
-        if (lineptr_copy== NULL){
+        if (lineptr_copy == NULL){
             perror("tsh: memory allocation error");
             break;
         }
@@ -32,7 +55,7 @@ int main(int ac, char **argv){
             token = strtok(NULL, delim);
         }
         num_tokens++;
-        char **args = malloc(sizeof(char *) * num_tokens);
+        args = malloc(sizeof(char *) * num_tokens);
         token = strtok(lineptr_copy, delim);
 
         for (i = 0; token != NULL; i++){
@@ -51,7 +74,7 @@ int main(int ac, char **argv){
         free(lineptr_copy);
         lineptr_copy = NULL;
         num_tokens = 0;
-    } 
+    }
 
     free(lineptr);
 
