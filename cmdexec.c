@@ -4,15 +4,15 @@ void execmd(char *argv[])
 {
 	char *command = NULL;
 
-	if (argv)
+	if (*argv)
 	{
 		/* get the command */
 		command = argv[0];
 
 		/* execute the command with execve */
-		if (execve(command, (char *const *)argv, NULL) == -1)
+		if (execve(command, (char * const*)argv, NULL) == -1)
 		{
 			perror("Error:");
-		};
+		}
 	}
 }
