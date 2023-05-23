@@ -1,6 +1,6 @@
 #include "main.h"
 
-void execmd(char **argv)
+void execmd(char *argv[])
 {
 	char *command = NULL;
 
@@ -10,7 +10,7 @@ void execmd(char **argv)
 		command = argv[0];
 
 		/* execute the command with execve */
-		if (execve(command, argv, NULL) == -1)
+		if (execve(command, (char *const *)argv, NULL) == -1)
 		{
 			perror("Error:");
 		};
