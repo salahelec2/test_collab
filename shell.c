@@ -12,6 +12,7 @@ int main(void)
 	char *read_line = NULL;
 	size_t n = 0;
 	ssize_t read_chars_count;
+	char *env_var = *environ;
 
 	while (1)
 	{
@@ -26,6 +27,17 @@ int main(void)
 		{
 			free(read_line);
 			exit(0);
+		}
+		if (_strcmp(read_line, "env\n") == 0)
+		{
+
+			while (env_var != NULL)
+			{
+				_puts(env_var);
+				_putchar('\n');
+				env_var = *(environ++);
+			}
+			continue;
 		}
 
 		_puts(read_line);
