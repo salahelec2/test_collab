@@ -5,23 +5,27 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
-void execmd(char *argv[]) {
+void execmd(char *args[]) {
+  pid_t pid;
   char *command;
 
-  if (*argv) {
-    /* get the command */
-    command = argv[0];
+  if (*args) {
+    /* Fork a child process */
+    pid = fork();
 
-    /* check to see if the command is valid */
-    if (!command || !strcmp(command, "")) {
-      printf("Error: invalid command\n");
-      return;
-    }
-
-    /* execute the command with execve */
-    if (execve(command, argv, NULL) == -1) {
+    if (pid == 0) {
+      /* This is the child process */
+      command = args[0];
+      execve(command, args, NULL);
       perror("Error:");
-      return;
+      exit(1);
+    } else if (pid > 0) {
+      /* This is the parent process */
+      wait(NULL);
+    } else {
+      /* Error creating child process */
+      perror("Error:");
+      exit(1);
     }
   }
 }
@@ -44,14 +48,14 @@ int main(int ac, char *argv[]) {
     printf("%s", prompt);
     nchars_read = getline(&lineptr, &n, stdin);
     if (nchars_read == -1) {
-      printf("Exiting shell....\n");
-      break;
+      perror("Error reading input");
+      continue;
     }
 
     lineptr_copy = malloc(sizeof(char) * nchars_read);
     if (lineptr_copy == NULL) {
       perror("tsh: memory allocation error");
-      break;
+      continue;
     }
     strcpy(lineptr_copy, lineptr);
     token = strtok(lineptr, delim);
