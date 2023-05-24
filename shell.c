@@ -14,9 +14,11 @@ int main(void)
 
 	while (1)
 	{
-		printf("%s", prompt);
+		_puts(prompt);
 		getline(&read_line, &n, stdin);
-		printf("%s\n", read_line);
+		_puts(read_line);
+        _putchar(10);
+
 	}
 	free(read_line);
 	return (0);

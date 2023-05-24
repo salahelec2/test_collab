@@ -6,6 +6,9 @@
 #include <string.h>
 #include <unistd.h>
 
-void execmd(char *argv[]);
+void _puts(char *str);
+int _putchar(char c);
+
+
 
 #endif
