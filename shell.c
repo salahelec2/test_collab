@@ -1,26 +1,5 @@
 #include "main.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-
-void execmd(char *argv[])
-{
-	char *command = NULL;
-
-	if (*argv)
-	{
-		/* get the command */
-		command = argv[0];
-
-		/* execute the command with execve */
-		if (execve(command, (char * const*)argv, NULL) == -1)
-		{
-			perror("Error:");
-		}
-	}
-}
 
 int main(int ac, char *argv[])
 {
