@@ -30,16 +30,18 @@ int _strcmp(char *s1, char *s2)
  * Return: ponter to dest
  */
 
-char *_strcpy(char *dest, const char *src) {
-  char *dest_start = dest;
+char *_strcpy(char *dest, const char *src)
+{
+	char *dest_start = dest;
 
-  while (*src != '\0') {
-    *dest = *src;
-    dest++;
-    src++;
-  }
+	while (*src != '\0')
+	{
+		*dest = *src;
+		dest++;
+		src++;
+	}
 
-  *dest = '\0';
+	*dest = '\0';
 
-  return dest_start;
+	return dest_start;
 }
