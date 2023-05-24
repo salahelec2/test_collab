@@ -55,7 +55,7 @@ int main(int ac, char *argv[])
 
   while (1)
   {
-    printf("%s", prompt);
+    _puts("%s", prompt);
     nchars_read = getline(&lineptr, &n, stdin);
     if (nchars_read == -1)
     {
@@ -64,7 +64,7 @@ int main(int ac, char *argv[])
     }
     if (strcmp(lineptr, "exit\n") == 0)
     {
-      printf("Exiting shell....\n");
+      _puts("Exiting shell....\n");
       break;
     }
     if (_strcmp(lineptr, "env\n") == 0)
@@ -84,7 +84,7 @@ int main(int ac, char *argv[])
       perror("tsh: memory allocation error");
       continue;
     }
-    strcpy(lineptr_copy, lineptr);
+    _strcpy(lineptr_copy, lineptr);
     token = strtok(lineptr, delim);
     while (token != NULL)
     {
@@ -98,7 +98,7 @@ int main(int ac, char *argv[])
     for (i = 0; token != NULL; i++)
     {
       args[i] = malloc(sizeof(char) * (strlen(token) + 1));
-      strcpy(args[i], token);
+      _strcpy(args[i], token);
 
       token = strtok(NULL, delim);
     }

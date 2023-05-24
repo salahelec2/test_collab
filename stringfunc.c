@@ -21,3 +21,25 @@ int _strcmp(char *s1, char *s2)
 	}
 	return (*s1 - *s2);
 }
+
+/**
+ * _strcpy - copy strings
+ * @dest: string destination
+ * @src: string source
+ *
+ * Return: ponter to dest
+ */
+
+char *_strcpy(char *dest, const char *src) {
+  char *dest_start = dest;
+
+  while (*src != '\0') {
+    *dest = *src;
+    dest++;
+    src++;
+  }
+
+  *dest = '\0';
+
+  return dest_start;
+}

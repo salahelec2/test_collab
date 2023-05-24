@@ -14,7 +14,7 @@ void execmd(char *argv[]) {
 
     /* check to see if the command is valid */
     if (!command || !strcmp(command, "")) {
-      printf("Error: invalid command\n");
+      _puts("Error: invalid command\n");
       return;
     }
 
@@ -43,13 +43,13 @@ int main(int ac, char *argv[]) {
   (void)argv;
 
   while (1) {
-    printf("%s", prompt);
+    _puts("%s", prompt);
     nchars_read = getline(&lineptr, &n, stdin);
     if (nchars_read == -1) {
       if (lineptr != NULL) {
         free(lineptr);
       }
-      printf("Exiting shell....\n");
+      _puts("Exiting shell....\n");
       break;
     }
 
@@ -62,7 +62,7 @@ int main(int ac, char *argv[]) {
       perror("tsh: memory allocation error");
       break;
     }
-    strcpy(lineptr_copy, lineptr);
+    _strcpy(lineptr_copy, lineptr);
     token = strtok(lineptr, delim);
     while (token != NULL) {
       num_tokens++;
@@ -74,7 +74,7 @@ int main(int ac, char *argv[]) {
 
     for (i = 0; token != NULL; i++) {
       args[i] = malloc(sizeof(char) * (strlen(token) + 1));
-      strcpy(args[i], token);
+      _strcpy(args[i], token);
 
       token = strtok(NULL, delim);
     }

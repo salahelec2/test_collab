@@ -38,6 +38,7 @@
   "files.associations": {
     "main.h": "c",
     "stdlib.h": "c",
-    "*.cy": "c"
+    "*.cy": "c",
+    "stdio.h": "c"
   }
 }
