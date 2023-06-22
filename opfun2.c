@@ -5,7 +5,7 @@
  * @stack: Double linked list
  * @line_number: File line execution
  */
-void swap(stack_t **stack, unsigned int line_number)
+void op_swap(stack_t **stack, unsigned int line_number)
 {
 	int tmp;
 
@@ -22,11 +22,11 @@ void swap(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * add - add the top two elements of the stack
+ * op_add - add the top two elements of the stack
  * @stack: Double linked list
  * @line_number: File line execution
  */
-void add(stack_t **stack, unsigned int line_number)
+void op_add(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack || !(*stack)->next)
 	{
@@ -36,7 +36,7 @@ void add(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	(*stack)->next->n = (*stack)->next->n + (*stack)->n;
-	pop(stack, line_number);
+	op_pop(stack, line_number);
 }
 
 /**
@@ -44,7 +44,7 @@ void add(stack_t **stack, unsigned int line_number)
  * @stack: Double linked list
  * @line_number: Line counter
  */
-void sub(stack_t **stack, unsigned int line_number)
+void op_sub(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack || !(*stack)->next)
 	{
@@ -54,7 +54,7 @@ void sub(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	(*stack)->next->n = (*stack)->next->n - (*stack)->n;
-	pop(stack, line_number);
+	op_pop(stack, line_number);
 }
 
 /**
@@ -62,7 +62,7 @@ void sub(stack_t **stack, unsigned int line_number)
  * @stack: Double linked list
  * @line_number: File line counter
  */
-void divi(stack_t **stack, unsigned int line_number)
+void op_divi(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack || !(*stack)->next)
 	{
@@ -78,5 +78,5 @@ void divi(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	(*stack)->next->n = (*stack)->next->n / (*stack)->n;
-	pop(stack, line_number);
+	op_pop(stack, line_number);
 }

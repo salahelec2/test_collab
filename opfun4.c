@@ -5,7 +5,7 @@
  * @stack: Double linked list
  * @line_number: File line execution
  */
-void rotl(stack_t **stack, unsigned int line_number)
+void op_rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tm = *stack;
 	(void) line_number;
@@ -26,7 +26,7 @@ void rotl(stack_t **stack, unsigned int line_number)
  * @stack: Double linked list
  * @line_number: File line execution
  */
-void rotr(stack_t **stack, unsigned int line_number)
+void op_rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 	(void) line_number;
@@ -52,12 +52,12 @@ void rotr(stack_t **stack, unsigned int line_number)
  * @stack: Double linked list
  * @line_number: File line execution
  */
-void stack(stack_t **stack, unsigned int line_number)
+void op_stack(stack_t **stack, unsigned int line_number)
 {
 	(void) line_number;
 	(void) stack;
 
-	var.MODE = 0;
+	g_var.MODE = 0;
 }
 
 /**
@@ -65,10 +65,10 @@ void stack(stack_t **stack, unsigned int line_number)
  * @stack: Double linked list
  * @line_number: File line execution
  */
-void queue(stack_t **stack, unsigned int line_number)
+void op_queue(stack_t **stack, unsigned int line_number)
 {
 	(void) line_number;
 	(void) stack;
 
-	var.MODE = 1;
+	g_var.MODE = 1;
 }

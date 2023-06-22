@@ -5,7 +5,7 @@
  * @stack: Double linked list
  * @line_number: File line execution
  */
-void mul(stack_t **stack, unsigned int line_number)
+void op_mul(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack || !(*stack)->next)
 	{
@@ -15,7 +15,7 @@ void mul(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	(*stack)->next->n = (*stack)->next->n * (*stack)->n;
-	pop(stack, line_number);
+	op_pop(stack, line_number);
 }
 
 
@@ -24,7 +24,7 @@ void mul(stack_t **stack, unsigned int line_number)
  * @stack: Double linked list
  * @line_number: File line execution
  */
-void mod(stack_t **stack, unsigned int line_number)
+void op_mod(stack_t **stack, unsigned int line_number)
 {
 	if (!*stack || !(*stack)->next)
 	{
@@ -40,7 +40,7 @@ void mod(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	(*stack)->next->n = (*stack)->next->n % (*stack)->n;
-	pop(stack, line_number);
+	op_pop(stack, line_number);
 }
 
 int is_ascii(int c) {
@@ -52,7 +52,7 @@ int is_ascii(int c) {
  * @stack: Double linked list
  * @line_number: File line execution
  */
-void pchar(stack_t **stack, unsigned int line_number)
+void op_pchar(stack_t **stack, unsigned int line_number)
 {
 	if (!stack || !*stack)
 	{
@@ -75,7 +75,7 @@ void pchar(stack_t **stack, unsigned int line_number)
  * @stack: Double linked list
  * @line_number: File line execution
  */
-void pstr(stack_t **stack, unsigned int line_number)
+void op_pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
 	(void) line_number;
